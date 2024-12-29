@@ -74,7 +74,7 @@ public class FluentParserFactoryImpl implements FluentParserFactory{
     @Override
     public FluentParser<String> repetitiveIncrementalStrings(String s) {
         return new FluentParser<String>(){
-            private FluentParser<Integer> parserIncN = repetitiveIncrementalNaturals();
+            private final FluentParser<Integer> parserIncN = repetitiveIncrementalNaturals();
 
             @Override
             public FluentParser<String> accept(String value) {
