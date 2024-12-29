@@ -88,10 +88,28 @@ public class FluentParserFactoryImpl implements FluentParserFactory{
 
         };
     }
-
+/* 
     @Override
     public FluentParser<Pair<Integer, List<String>>> incrementalPairs(int i0, UnaryOperator<Integer> op, String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new FluentParser<Pair<Integer, List<String>>>(){
+            private int i = 0;
+            private FluentParser<Integer> parserNX = naturals();
+            private FluentParser<Integer> parserNY = naturals();
+
+            @Override
+            public FluentParser<Pair<Integer, List<String>>> accept(Pair<Integer, List<String>> value) {
+                try {
+                    parserNX.accept(value.getX());
+                    parserNY.accept(value.getY().size());
+                } catch (IllegalStateException e) {
+                    if (i >= i0 && i){
+
+                    }
+                }
+                return this;
+            }
+
+        };*/
     }
     
 }
