@@ -30,11 +30,12 @@ public class FluentParserFactoryImpl implements FluentParserFactory{
             @Override
             public FluentParser<List<Integer>> accept(List<Integer> value) {
                 try {
+                    if(value.size() != sizeExpected){
+                        throw new IllegalStateException();
+                    }
                     value.forEach(v -> parserN.accept(v));
                 } catch (IllegalStateException e) {
-                    if(value.size() != sizeExpected){
-                        throw e;
-                    }
+                    throw e;
                 }
                 sizeExpected++;
                 parserN = naturals();
@@ -110,6 +111,11 @@ public class FluentParserFactoryImpl implements FluentParserFactory{
             }
 
         };*/
+
+    @Override
+    public FluentParser<Pair<Integer, List<String>>> incrementalPairs(int i0, UnaryOperator<Integer> op, String s) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+    
     
 }
